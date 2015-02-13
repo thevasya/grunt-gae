@@ -95,6 +95,10 @@ module.exports = function (grunt) {
 
         grunt.log.debug(command);
 
+        if (options.sdkPath !== '.') {
+            command = options.sdkPath + command;
+        }
+
         // Run the command.
         childProcess = exec(command, {}, function () {});
 
@@ -145,6 +149,7 @@ module.exports = function (grunt) {
                 application: null,
                 version: null,
                 path: '.',
+                sdkPath: '.',
                 auth: 'oauth2',
                 async: false,
                 asyncOutput: false,
